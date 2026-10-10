@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIME FITHIT GYM — Omega City, Kharar | Ultra-Athletic Streetwear Gym</title>
+  <meta name="description" content="Prime FitHit Gym in Omega City, Kharar near Chandigarh University. Spacious athletic facility featuring modern biomechanical equipment, CrossFit arena, and certified trainers. Rated 5.0 ★ on Google.">
+  
+  <!-- Google Fonts: Syne (Brutalist display), Space Grotesk (Tactical technical), Inter (Editorial Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#080808',
+            surface: {
+              DEFAULT: '#111110',
+              elevated: '#161615',
+              card: '#181817',
+              border: '#262624',
+              highlight: '#2f2f2c'
+            },
+            bone: {
+              DEFAULT: '#F5F5F2',
+              muted: '#D8D6CE',
+              gray: '#9E9E98',
+              dim: '#61615D'
+            },
+            accent: {
+              chalk: '#FFFFFF',
+              emerald: '#4ADE80',
+              amber: '#F59E0B'
+            }
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            bebas: ['"Bebas Neue"', 'sans-serif'],
+            grotesk: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          },
+          letterSpacing: {
+            ultra: '0.35em',
+            mega: '0.22em',
+            tightest: '-0.06em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Reset & Custom Editorial Utility Classes */
+    ::selection {
+      background-color: #F5F5F2;
+      color: #080808;
+    }
+
+    body {
+      background-color: #080808;
+      color: #F5F5F2;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Film grain background overlay */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080808;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262624;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #61615D;
+    }
+
+    /* Kinetic typography outline */
+    .stroke-text {
+      -webkit-text-stroke: 1.5px rgba(245, 245, 242, 0.35);
+      color: transparent;
+      transition: all 0.4s ease;
+    }
+    .stroke-text:hover {
+      -webkit-text-stroke: 1.5px rgba(245, 245, 242, 0.9);
+      color: rgba(245, 245, 242, 0.05);
+    }
+
+    /* Marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Magnetic & High fashion button micro-interactions */
+    .btn-bone {
+      position: relative;
+      background: #F5F5F2;
+      color: #080808;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-bone:hover {
+      transform: translateY(-2px);
+      background: #FFFFFF;
+      box-shadow: 0 10px 30px -10px rgba(245, 245, 242, 0.25);
+    }
+    .btn-bone:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    .btn-outline {
+      position: relative;
+      background: rgba(17, 17, 16, 0.7);
+      border: 1px solid #262624;
+      color: #F5F5F2;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .btn-outline:hover {
+      border-color: #9E9E98;
+      background: rgba(38, 38, 36, 0.8);
+      transform: translateY(-2px);
+    }
+    .btn-outline:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    /* Hairline technical borders */
+    .hairline-b {
+      border-bottom: 1px solid #262624;
+    }
+    .hairline-t {
+      border-top: 1px solid #262624;
+    }
+    .hairline-l {
+      border-left: 1px solid #262624;
+    }
+    .hairline-r {
+      border-right: 1px solid #262624;
+    }
+    .hairline-all {
+      border: 1px solid #262624;
+    }
+
+    /* High fashion image treatment */
+    .editorial-img {
+      filter: grayscale(100%) contrast(110%) brightness(92%);
+      transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .editorial-card:hover .editorial-img {
+      filter: grayscale(85%) contrast(115%) brightness(98%);
+      transform: scale(1.03);
+    }
+
+    /* Pulse dot */
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.4; }
+    }
+    .live-pulse {
+      animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Intro canvas absolute fit */
+    #intro-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: #080808;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    #chalk-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .letter-span {
+      display: inline-block;
+      will-change: transform, opacity;
+      transform-origin: center bottom;
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop {
+      background: rgba(8, 8, 8, 0.88);
+      backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-bone selection:bg-bone selection:text-obsidian antialiased">
+
+  <!-- Deep Grain Texture Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ======================================================== -->
+  <!-- 1. THE CINEMATIC "LETTER FALL & CHALK BURST" ENTRANCE    -->
+  <!-- ======================================================== -->
+  <section id="intro-screen" class="cursor-pointer" title="Click to skip into homepage">
+    <!-- Chalk Dust & Smoke Particles Canvas -->
+    <canvas id="chalk-canvas"></canvas>
+
+    <!-- Top Micro Indicator -->
+    <div id="intro-indicator" class="absolute top-8 left-0 right-0 px-6 flex justify-between items-center z-20 opacity-0 transition-opacity duration-700">
+      <div class="flex items-center space-x-2 text-[10px] md:text-xs font-grotesk tracking-widest text-bone-gray uppercase">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-emerald live-pulse"></span>
+        <span>OMEGA CITY, KHARAR • 5.0 ★ (553 VERIFIED REVIEWS)</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <!-- Audio Synthesizer Toggle -->
+        <button id="btn-sound-toggle" type="button" class="text-[10px] font-grotesk tracking-widest text-bone-dim hover:text-bone flex items-center space-x-1.5 py-1 px-2 rounded hairline-all bg-surface-elevated/40">
+          <i data-lucide="volume-2" class="w-3 h-3 text-bone-muted" id="sound-icon"></i>
+          <span id="sound-label">AUDIO: ON</span>
+        </button>
+        <!-- Skip Intro -->
+        <button id="btn-skip-intro" type="button" class="text-[10px] font-grotesk tracking-widest text-bone-gray hover:text-bone uppercase border-b border-bone-border pb-0.5">
+          SKIP INTRO [ESC]
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Typography Stage -->
+    <div id="intro-stage" class="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-7xl mx-auto w-full select-none">
+      
+      <!-- Primary Title: Heavy bone-white typography with physics letter fall -->
+      <div id="intro-letters-wrap" class="relative flex flex-wrap items-center justify-center font-syne font-black text-4xl sm:text-6xl md:text-8xl lg:text-9xl tracking-tighter text-bone leading-none mb-3 sm:mb-4">
+        <!-- Word 1: PRIME -->
+        <div class="flex items-center mr-4 sm:mr-8 md:mr-10">
+          <span class="letter-span inline-block">P</span>
+          <span class="letter-span inline-block">R</span>
+          <span class="letter-span inline-block">I</span>
+          <span class="letter-span inline-block">M</span>
+          <span class="letter-span inline-block">E</span>
+        </div>
+        <!-- Word 2: FITHIT -->
+        <div class="flex items-center">
+          <span class="letter-span inline-block">F</span>
+          <span class="letter-span inline-block">I</span>
+          <span class="letter-span inline-block">T</span>
+          <span class="letter-span inline-block">H</span>
+          <span class="letter-span inline-block">I</span>
+          <span class="letter-span inline-block">T</span>
+        </div>
+      </div>
+
+      <!-- Tagline: "GET IN. GET FIT." Wipes/fades in directly beneath -->
+      <div id="intro-tagline" class="opacity-0 translate-y-3 font-grotesk text-xs sm:text-sm md:text-base font-semibold tracking-ultra text-bone-muted uppercase flex items-center justify-center space-x-3">
+        <span class="w-6 sm:w-10 h-px bg-bone-border inline-block"></span>
+        <span>GET IN. GET FIT.</span>
+        <span class="w-6 sm:w-10 h-px bg-bone-border inline-block"></span>
+      </div>
+
+      <!-- Impact Line (Floor Reference) -->
+      <div id="intro-floor-line" class="w-48 sm:w-80 h-px bg-surface-border mt-8 sm:mt-10 opacity-0"></div>
+    </div>
+
+    <!-- Bottom Click Hint -->
+    <div id="intro-hint" class="absolute bottom-6 font-grotesk text-[10px] tracking-widest text-bone-dim uppercase z-20 opacity-0 transition-opacity">
+      TAP ANYWHERE TO ENTER DIRECTLY
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- FIXED NAVIGATION BAR (High-Fashion Editorial Header)    -->
+  <!-- ======================================================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 hairline-b bg-obsidian/80 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Lockup -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-8 h-8 rounded hairline-all bg-surface-elevated flex items-center justify-center group-hover:border-bone transition-colors">
+          <span class="font-syne font-black text-sm text-bone">PF</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-syne font-bold tracking-tight text-sm sm:text-base text-bone group-hover:text-accent-chalk transition-colors">
+            PRIME FITHIT
+          </span>
+          <span class="font-grotesk text-[9px] tracking-widest text-bone-dim uppercase">
+            OMEGA CITY • KHARAR
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Nav Links (Desktop) -->
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-grotesk tracking-widest text-bone-gray uppercase">
+        <a href="#metrics" class="hover:text-bone transition-colors">METRICS</a>
+        <a href="#reviews" class="hover:text-bone transition-colors">5.0 ARCHIVE</a>
+        <a href="#amenities" class="hover:text-bone transition-colors">AMENITIES</a>
+        <a href="#facility" class="hover:text-bone transition-colors">FACILITY</a>
+        <a href="#location" class="hover:text-bone transition-colors">LOCATION</a>
+      </nav>
+
+      <!-- Right Actions: Status Pill + Replay + VIP CTA -->
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        
+        <!-- Live Status Pill -->
+        <div id="nav-status-pill" class="hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full hairline-all bg-surface-elevated/80 text-[10px] font-grotesk tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-accent-emerald live-pulse"></span>
+          <span id="nav-status-text" class="text-bone-muted font-medium">OPEN NOW • CLOSES 10:00 PM</span>
+        </div>
+
+        <!-- Replay Intro Button (Pitch demo) -->
+        <button id="btn-replay-intro" type="button" title="Replay Cinematic Intro" class="p-2 sm:px-3 sm:py-1.5 rounded hairline-all bg-surface hover:bg-surface-elevated text-[11px] font-grotesk tracking-wider text-bone-gray hover:text-bone transition-all flex items-center space-x-1.5">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">REPLAY INTRO</span>
+        </button>
+
+        <!-- Book VIP Pass CTA -->
+        <button onclick="openVipModal()" class="btn-bone px-3.5 sm:px-5 py-2 rounded text-xs font-grotesk font-semibold tracking-wider uppercase">
+          VIP PASS
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 2. HERO & KEY METRICS (High-Fashion Editorial Layout)   -->
+  <!-- ======================================================== -->
+  <main class="pt-20">
+    <section id="hero" class="relative min-h-[92vh] flex flex-col justify-between pt-8 sm:pt-14 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hairline-b">
+      
+      <!-- Top Tactical Micro Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 text-[10px] font-grotesk tracking-widest text-bone-dim uppercase pb-6 hairline-b">
+        <div class="flex items-center space-x-3">
+          <span>COORDINATES: 30.7415° N, 76.6384° E</span>
+          <span class="hidden sm:inline text-surface-border">|</span>
+          <span class="hidden sm:inline">SECTOR: OMEGA CITY, KHARAR</span>
+        </div>
+        <div class="flex items-center space-x-3">
+          <span class="text-accent-emerald font-semibold flex items-center space-x-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-emerald"></span>
+            <span>VERIFIED ON GOOGLE MAPS</span>
+          </span>
+          <span class="text-surface-border">|</span>
+          <span>EST. 2020 • 4 YRS LEGACY</span>
+        </div>
+      </div>
+
+      <!-- Main Brutalist Headline Grid -->
+      <div class="my-auto py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        
+        <!-- Left: Massive Heavy Typography -->
+        <div class="lg:col-span-8 flex flex-col justify-center">
+          
+          <!-- Live Status Pill (Mobile & Desktop) -->
+          <div class="inline-flex items-center self-start space-x-2.5 px-3 py-1.5 rounded-full hairline-all bg-surface-elevated mb-6">
+            <span class="w-2 h-2 rounded-full bg-accent-emerald live-pulse"></span>
+            <span id="hero-status-badge" class="font-grotesk text-xs tracking-wider text-bone font-medium">
+              OPEN NOW • CLOSES 10:00 PM
+            </span>
+          </div>
+
+          <!-- Editorial Brutalist Headline -->
+          <h1 class="font-syne font-black tracking-tighter uppercase leading-[0.88] text-bone">
+            <span class="block text-5xl sm:text-7xl md:text-8xl lg:text-[7.2rem]">PRIME FITHIT</span>
+            <span class="block text-4xl sm:text-6xl md:text-7xl lg:text-[5.8rem] text-bone-muted font-extrabold mt-1 sm:mt-2">
+              GYM <span class="stroke-text font-outline font-black">[OMEGA CITY]</span>
+            </span>
+          </h1>
+
+          <!-- Editorial Subtitle -->
+          <p class="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg md:text-xl font-normal text-bone-gray leading-relaxed font-sans">
+            Spacious, well-maintained athletic facility featuring modern biomechanical equipment and certified trainers. Engineered for serious strength, Olympic lifting, and functional athletic conditioning.
+          </p>
+
+          <!-- High-Contrast CTAs -->
+          <div class="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+            
+            <!-- Claim 1-Day VIP Pass Button -->
+            <button onclick="openVipModal()" class="btn-bone px-7 py-4 rounded font-grotesk font-bold text-sm tracking-wider uppercase flex items-center space-x-3">
+              <span>CLAIM 1-DAY VIP PASS</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </button>
+
+            <!-- WhatsApp Concierge Button -->
+            <a href="https://wa.me/918378000084?text=Hey%20Prime%20FitHit,%20I%20want%20to%20book%20a%20VIP%20floor%20pass%20at%20your%20Omega%20City%20branch." target="_blank" rel="noopener noreferrer" class="btn-outline px-6 py-4 rounded font-grotesk font-medium text-sm tracking-wider uppercase flex items-center space-x-3 text-bone">
+              <i data-lucide="message-circle" class="w-4 h-4 text-accent-emerald"></i>
+              <span>WHATSAPP CONCIERGE</span>
+            </a>
+
+            <!-- Direct Quick Call -->
+            <a href="tel:08378000084" class="inline-flex items-center space-x-2 text-xs font-grotesk tracking-widest text-bone-dim hover:text-bone py-3 px-2 transition-colors">
+              <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+              <span>083780 00084</span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Right: Editorial Visual Card (Represent 247 / Gymshark Onyx aesthetic) -->
+        <div class="lg:col-span-4 relative">
+          <div class="editorial-card relative overflow-hidden rounded-lg hairline-all bg-surface-card p-3 group">
+            
+            <!-- Image with dark film treatment -->
+            <div class="relative aspect-[4/5] overflow-hidden rounded bg-surface">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=85&w=1200&auto=format&fit=crop" alt="Prime FitHit Athletes in moody brutalist gym" class="editorial-img w-full h-full object-cover">
+              
+              <!-- Subtle gradient vignette -->
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80"></div>
+              
+              <!-- Tactical Overlay Badges -->
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-obsidian/80 backdrop-blur hairline-all text-[9px] font-grotesk tracking-widest text-bone-muted uppercase">
+                SERIES 247 // OMEGA CITY
+              </div>
+              
+              <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+                <div>
+                  <span class="block text-[9px] font-grotesk tracking-widest text-bone-dim uppercase">FACILITY PROFILE</span>
+                  <span class="font-syne font-bold text-sm text-bone">BIOMECHANICAL RIG</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-syne font-black text-xl text-accent-chalk">5.0 ★</span>
+                  <span class="block text-[8px] font-grotesk tracking-widest text-bone-dim uppercase">553 REVIEWS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Bottom Spec Ticker -->
+            <div class="mt-3 px-1 py-1 flex items-center justify-between text-[10px] font-grotesk tracking-wider text-bone-dim uppercase">
+              <span>PLOT NO. B-01100077</span>
+              <span>NEAR CHANDIGARH UNIV</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Key Metrics Strip (Editorial High-Fashion Grid) -->
+      <div id="metrics" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 hairline-t">
+        
+        <div class="p-4 rounded hairline-all bg-surface/50">
+          <div class="flex items-center space-x-1.5 text-accent-chalk font-syne font-black text-2xl sm:text-3xl">
+            <span>5.0</span>
+            <span class="text-accent-amber text-xl">★</span>
+          </div>
+          <p class="font-grotesk text-[11px] tracking-wider text-bone-dim uppercase mt-1">553+ VERIFIED REVIEWS</p>
+          <span class="text-[9px] text-accent-emerald font-grotesk tracking-widest uppercase block mt-1">100% GOOGLE RATING</span>
+        </div>
+
+        <div class="p-4 rounded hairline-all bg-surface/50">
+          <div class="text-accent-chalk font-syne font-black text-2xl sm:text-3xl">
+            10,000+
+          </div>
+          <p class="font-grotesk text-[11px] tracking-wider text-bone-dim uppercase mt-1">SQ FT ATHLETIC DECK</p>
+          <span class="text-[9px] text-bone-muted font-grotesk tracking-widest uppercase block mt-1">DUAL CROSSFIT ARENA</span>
+        </div>
+
+        <div class="p-4 rounded hairline-all bg-surface/50">
+          <div class="text-accent-chalk font-syne font-black text-2xl sm:text-3xl">
+            100%
+          </div>
+          <p class="font-grotesk text-[11px] tracking-wider text-bone-dim uppercase mt-1">BIOMECHANICAL RIGS</p>
+          <span class="text-[9px] text-bone-muted font-grotesk tracking-widest uppercase block mt-1">ZERO SHORTCUTS</span>
+        </div>
+
+        <div class="p-4 rounded hairline-all bg-surface/50">
+          <div class="text-accent-chalk font-syne font-black text-2xl sm:text-3xl">
+            4 YRS+
+          </div>
+          <p class="font-grotesk text-[11px] tracking-wider text-bone-dim uppercase mt-1">COMMUNITY RETENTION</p>
+          <span class="text-[9px] text-bone-muted font-grotesk tracking-widest uppercase block mt-1">KHARAR DESTINATION</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- AMENITIES TICKER (Infinite Smooth Marquee)               -->
+    <!-- ======================================================== -->
+    <div id="amenities-ticker" class="w-full overflow-hidden py-4 hairline-b bg-surface-elevated/40 select-none">
+      <div class="animate-marquee flex items-center space-x-8 text-xs sm:text-sm font-grotesk font-semibold tracking-mega text-bone-muted uppercase">
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>CROSSFIT ARENA</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>OLYMPIC LIFTING PLATFORMS</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>MODERN BIOMECHANICAL CARDIO FLEET</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>CERTIFIED COACHING STAFF</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>ONLINE & HYBRID CLASSES</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>ON-SITE PRIVATE PARKING</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>AIR CONDITIONED RESTROOMS</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>MAGNESIUM CHALK STATIONS</span></span>
+        <!-- Duplicate for continuous seamless marquee -->
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>CROSSFIT ARENA</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>OLYMPIC LIFTING PLATFORMS</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>MODERN BIOMECHANICAL CARDIO FLEET</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>CERTIFIED COACHING STAFF</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>ONLINE & HYBRID CLASSES</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>ON-SITE PRIVATE PARKING</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>AIR CONDITIONED RESTROOMS</span></span>
+        <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span><span>MAGNESIUM CHALK STATIONS</span></span>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- 3. THE 5.0 SOCIAL PROOF ARCHIVE (Gen-Z Minimalist Grid)  -->
+    <!-- ======================================================== -->
+    <section id="reviews" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hairline-b">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+        <div>
+          <div class="inline-flex items-center space-x-2 text-[10px] font-grotesk tracking-widest text-bone-dim uppercase mb-3">
+            <span class="text-accent-emerald">●</span>
+            <span>VERIFIED ATHLETE TESTIMONIALS</span>
+            <span class="text-surface-border">/</span>
+            <span>GOOGLE MAPS LISTING</span>
+          </div>
+          <h2 class="font-syne font-black text-3xl sm:text-5xl md:text-6xl text-bone tracking-tight uppercase">
+            THE 5.0 BENCHMARK.
+          </h2>
+          <p class="font-sans text-sm sm:text-base text-bone-gray max-w-xl mt-3">
+            553+ real athletes, zero compromised standards. Verified reviews directly from our Omega City Google listing.
+          </p>
+        </div>
+
+        <!-- Google Score Badge Card -->
+        <div class="flex items-center space-x-4 p-4 rounded-lg hairline-all bg-surface-card self-start md:self-auto">
+          <div class="w-12 h-12 rounded bg-surface-elevated flex items-center justify-center font-syne font-black text-xl text-accent-chalk hairline-all">
+            5.0
+          </div>
+          <div>
+            <div class="flex text-accent-amber text-xs space-x-0.5">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <span class="text-xs font-grotesk font-semibold text-bone block mt-0.5 tracking-wider">5.0 ★ RATING • 553+ GOOGLE REVIEWS</span>
+            <a href="https://maps.google.com/?q=Prime+FitHit+Gym+Omega+City+Kharar" target="_blank" rel="noopener noreferrer" class="text-[10px] font-grotesk tracking-wider text-bone-gray hover:text-bone underline uppercase">
+              VIEW LIVE GOOGLE PROFILE ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs (Gen-Z Minimalist Pointers) -->
+      <div class="flex flex-wrap items-center gap-2 mb-8 text-xs font-grotesk tracking-wider">
+        <button onclick="filterReviews('all', this)" class="review-filter-btn active px-3.5 py-1.5 rounded hairline-all bg-bone text-obsidian font-semibold">
+          ALL (553+)
+        </button>
+        <button onclick="filterReviews('crossfit', this)" class="review-filter-btn px-3.5 py-1.5 rounded hairline-all bg-surface-elevated text-bone-gray hover:text-bone">
+          CROSSFIT & SPACE
+        </button>
+        <button onclick="filterReviews('equipment', this)" class="review-filter-btn px-3.5 py-1.5 rounded hairline-all bg-surface-elevated text-bone-gray hover:text-bone">
+          EQUIPMENT & AMBIANCE
+        </button>
+        <button onclick="filterReviews('coaching', this)" class="review-filter-btn px-3.5 py-1.5 rounded hairline-all bg-surface-elevated text-bone-gray hover:text-bone">
+          STAFF & COACHING
+        </button>
+      </div>
+
+      <!-- Review Cards Grid -->
+      <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 (Official Review Quote) -->
+        <article class="review-card p-6 sm:p-8 rounded-lg hairline-all bg-surface hover:border-bone-gray transition-all flex flex-col justify-between" data-category="equipment">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-accent-amber text-xs space-x-1">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[9px] font-grotesk tracking-widest text-accent-emerald uppercase bg-accent-emerald/10 px-2 py-0.5 rounded">
+                VERIFIED REVIEW
+              </span>
+            </div>
+            <p class="font-sans text-base sm:text-lg font-medium text-bone leading-relaxed">
+              “Amazing workout environment with professional staff and quality equipment”
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between">
+            <div>
+              <span class="font-grotesk font-semibold text-xs text-bone block">Google Verified Member</span>
+              <span class="text-[10px] font-grotesk text-bone-dim tracking-wider uppercase">Omega City Branch</span>
+            </div>
+            <span class="text-[10px] font-grotesk text-bone-dim uppercase">EQUIPMENT</span>
+          </div>
+        </article>
+
+        <!-- Review 2 (Official Review Quote - 4 Years) -->
+        <article class="review-card p-6 sm:p-8 rounded-lg hairline-all bg-surface hover:border-bone-gray transition-all flex flex-col justify-between" data-category="coaching">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-accent-amber text-xs space-x-1">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[9px] font-grotesk tracking-widest text-accent-emerald uppercase bg-accent-emerald/10 px-2 py-0.5 rounded">
+                4 YR MEMBER
+              </span>
+            </div>
+            <p class="font-sans text-base sm:text-lg font-medium text-bone leading-relaxed">
+              “Great gym great staff 4 years with this organisation loved the service”
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between">
+            <div>
+              <span class="font-grotesk font-semibold text-xs text-bone block">Longstanding Athlete</span>
+              <span class="text-[10px] font-grotesk text-bone-dim tracking-wider uppercase">Kharar Community</span>
+            </div>
+            <span class="text-[10px] font-grotesk text-bone-dim uppercase">COMMUNITY</span>
+          </div>
+        </article>
+
+        <!-- Review 3 (Official Review Quote - CrossFit) -->
+        <article class="review-card p-6 sm:p-8 rounded-lg hairline-all bg-surface hover:border-bone-gray transition-all flex flex-col justify-between" data-category="crossfit">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-accent-amber text-xs space-x-1">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[9px] font-grotesk tracking-widest text-accent-emerald uppercase bg-accent-emerald/10 px-2 py-0.5 rounded">
+                CROSSFIT PRO
+              </span>
+            </div>
+            <p class="font-sans text-base sm:text-lg font-medium text-bone leading-relaxed">
+              “Trainers r very helpful and skilled large space for CrossFit area”
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between">
+            <div>
+              <span class="font-grotesk font-semibold text-xs text-bone block">Functional Athlete</span>
+              <span class="text-[10px] font-grotesk text-bone-dim tracking-wider uppercase">Chandigarh Univ Track</span>
+            </div>
+            <span class="text-[10px] font-grotesk text-bone-dim uppercase">CROSSFIT</span>
+          </div>
+        </article>
+
+        <!-- Review 4 (Hygiene & Biomechanics) -->
+        <article class="review-card p-6 sm:p-8 rounded-lg hairline-all bg-surface hover:border-bone-gray transition-all flex flex-col justify-between" data-category="equipment">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-accent-amber text-xs space-x-1">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[9px] font-grotesk tracking-widest text-accent-emerald uppercase bg-accent-emerald/10 px-2 py-0.5 rounded">
+                VERIFIED REVIEW
+              </span>
+            </div>
+            <p class="font-sans text-base sm:text-lg font-medium text-bone leading-relaxed">
+              “Ultra-clean space with proper air conditioning. No crowding on the bench press or squat racks, biomechanics on machines are top-tier.”
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between">
+            <div>
+              <span class="font-grotesk font-semibold text-xs text-bone block">Strength Lifter</span>
+              <span class="text-[10px] font-grotesk text-bone-dim tracking-wider uppercase">Omega City Resident</span>
+            </div>
+            <span class="text-[10px] font-grotesk text-bone-dim uppercase">HYGIENE</span>
+          </div>
+        </article>
+
+        <!-- Review 5 (Coaching Attention) -->
+        <article class="review-card p-6 sm:p-8 rounded-lg hairline-all bg-surface hover:border-bone-gray transition-all flex flex-col justify-between" data-category="coaching">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-accent-amber text-xs space-x-1">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[9px] font-grotesk tracking-widest text-accent-emerald uppercase bg-accent-emerald/10 px-2 py-0.5 rounded">
+                VERIFIED REVIEW
+              </span>
+            </div>
+            <p class="font-sans text-base sm:text-lg font-medium text-bone leading-relaxed">
+              “Coaches actually correct posture on deadlifts instead of just standing around. Worth every rupee for students and athletes alike.”
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between">
+            <div>
+              <span class="font-grotesk font-semibold text-xs text-bone block">CU Scholar</span>
+              <span class="text-[10px] font-grotesk text-bone-dim tracking-wider uppercase">Daily Athlete</span>
+            </div>
+            <span class="text-[10px] font-grotesk text-bone-dim uppercase">COACHING</span>
+          </div>
+        </article>
+
+        <!-- Review 6 (Space & Atmosphere) -->
+        <article class="review-card p-6 sm:p-8 rounded-lg hairline-all bg-surface hover:border-bone-gray transition-all flex flex-col justify-between" data-category="crossfit">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-accent-amber text-xs space-x-1">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-[9px] font-grotesk tracking-widest text-accent-emerald uppercase bg-accent-emerald/10 px-2 py-0.5 rounded">
+                VERIFIED REVIEW
+              </span>
+            </div>
+            <p class="font-sans text-base sm:text-lg font-medium text-bone leading-relaxed">
+              “High-octane atmosphere, heavy weights, and high ceilings. You enter here and immediately feel dialed in to train hard.”
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between">
+            <div>
+              <span class="font-grotesk font-semibold text-xs text-bone block">Competitive Athlete</span>
+              <span class="text-[10px] font-grotesk text-bone-dim tracking-wider uppercase">Powerlifting Core</span>
+            </div>
+            <span class="text-[10px] font-grotesk text-bone-dim uppercase">ARENA</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Facility Features Grid (Exact Spec Highlights) -->
+      <div class="mt-16 pt-12 hairline-t">
+        <div class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase mb-6 flex items-center space-x-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-bone-dim"></span>
+          <span>FACILITY SPECIFICATIONS & ATHLETIC ZONES</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="p-4 rounded hairline-all bg-surface hover:border-bone transition-colors flex flex-col justify-between">
+            <i data-lucide="flame" class="w-5 h-5 text-accent-chalk mb-3"></i>
+            <div>
+              <span class="font-grotesk font-bold text-xs text-bone block uppercase">Olympic CrossFit Arena</span>
+              <span class="text-[9px] font-grotesk text-bone-dim tracking-wider uppercase mt-1 block">Full Rig & Turf Track</span>
+            </div>
+          </div>
+          <div class="p-4 rounded hairline-all bg-surface hover:border-bone transition-colors flex flex-col justify-between">
+            <i data-lucide="cpu" class="w-5 h-5 text-accent-chalk mb-3"></i>
+            <div>
+              <span class="font-grotesk font-bold text-xs text-bone block uppercase">Modern Biomechanical Fleet</span>
+              <span class="text-[9px] font-grotesk text-bone-dim tracking-wider uppercase mt-1 block">Iso-Lateral Precision</span>
+            </div>
+          </div>
+          <div class="p-4 rounded hairline-all bg-surface hover:border-bone transition-colors flex flex-col justify-between">
+            <i data-lucide="dumbbell" class="w-5 h-5 text-accent-chalk mb-3"></i>
+            <div>
+              <span class="font-grotesk font-bold text-xs text-bone block uppercase">Dedicated Free Weights</span>
+              <span class="text-[9px] font-grotesk text-bone-dim tracking-wider uppercase mt-1 block">Dumbbells up to 50kg+</span>
+            </div>
+          </div>
+          <div class="p-4 rounded hairline-all bg-surface hover:border-bone transition-colors flex flex-col justify-between">
+            <i data-lucide="wind" class="w-5 h-5 text-accent-chalk mb-3"></i>
+            <div>
+              <span class="font-grotesk font-bold text-xs text-bone block uppercase">Air Conditioned Restrooms</span>
+              <span class="text-[9px] font-grotesk text-bone-dim tracking-wider uppercase mt-1 block">Private Shower Suites</span>
+            </div>
+          </div>
+          <div class="p-4 rounded hairline-all bg-surface hover:border-bone transition-colors flex flex-col justify-between">
+            <i data-lucide="shield-check" class="w-5 h-5 text-accent-chalk mb-3"></i>
+            <div>
+              <span class="font-grotesk font-bold text-xs text-bone block uppercase">On-Site Parking</span>
+              <span class="text-[9px] font-grotesk text-bone-dim tracking-wider uppercase mt-1 block">Secure Athlete Bay</span>
+            </div>
+          </div>
+          <div class="p-4 rounded hairline-all bg-surface hover:border-bone transition-colors flex flex-col justify-between">
+            <i data-lucide="video" class="w-5 h-5 text-accent-chalk mb-3"></i>
+            <div>
+              <span class="font-grotesk font-bold text-xs text-bone block uppercase">Online Classes</span>
+              <span class="text-[9px] font-grotesk text-bone-dim tracking-wider uppercase mt-1 block">Hybrid Programming</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- FACILITY ARCHIVE LOOKBOOK (Represent 247 Style)          -->
+    <!-- ======================================================== -->
+    <section id="facility" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hairline-b">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+        <div>
+          <div class="inline-flex items-center space-x-2 text-[10px] font-grotesk tracking-widest text-bone-dim uppercase mb-3">
+            <span>LOOKBOOK // OMEGA CITY DISCIPLINE</span>
+          </div>
+          <h2 class="font-syne font-black text-3xl sm:text-5xl md:text-6xl text-bone tracking-tight uppercase">
+            THE FACILITY BLUEPRINT.
+          </h2>
+        </div>
+        <p class="font-sans text-sm sm:text-base text-bone-gray max-w-md">
+          Spacious high-volume architectural floor plan divided into distinct athletic training quadrants.
+        </p>
+      </div>
+
+      <!-- Facility Lookbook Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Large Card 1: CrossFit & Arena -->
+        <div class="md:col-span-8 editorial-card group relative rounded-lg overflow-hidden hairline-all bg-surface">
+          <div class="aspect-[16/9] sm:aspect-[21/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=85&w=1400&auto=format&fit=crop" alt="Prime FitHit CrossFit Arena and Turf" class="editorial-img w-full h-full object-cover">
+          </div>
+          <div class="p-6 bg-surface-card flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase block">QUADRANT 01</span>
+              <h3 class="font-syne font-bold text-xl text-bone uppercase mt-0.5">DUAL-ZONE CROSSFIT & TURF ARENA</h3>
+              <p class="font-sans text-xs text-bone-gray mt-1">High-impact rubberized flooring, functional rigs, sled sprints, kettlebell batteries.</p>
+            </div>
+            <span class="text-xs font-grotesk tracking-widest text-bone-muted uppercase whitespace-nowrap hairline-all px-3 py-1.5 rounded bg-surface">
+              HEAVY CAPACITY
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 2: Barbell & Chalk Plates -->
+        <div class="md:col-span-4 editorial-card group relative rounded-lg overflow-hidden hairline-all bg-surface">
+          <div class="aspect-[4/3] sm:aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=85&w=1200&auto=format&fit=crop" alt="Olympic Barbell and Chalk Dust" class="editorial-img w-full h-full object-cover">
+          </div>
+          <div class="p-6 bg-surface-card">
+            <span class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase block">QUADRANT 02</span>
+            <h3 class="font-syne font-bold text-lg text-bone uppercase mt-0.5">OLYMPIC BARBELL & CHALK BAYS</h3>
+            <p class="font-sans text-xs text-bone-gray mt-1">Competition-grade bars, calibrated bumper plates, dedicated magnesium dust bins.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Coaching & Spotting -->
+        <div class="md:col-span-4 editorial-card group relative rounded-lg overflow-hidden hairline-all bg-surface">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=85&w=1200&auto=format&fit=crop" alt="Certified Coach guiding form" class="editorial-img w-full h-full object-cover">
+          </div>
+          <div class="p-6 bg-surface-card">
+            <span class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase block">QUADRANT 03</span>
+            <h3 class="font-syne font-bold text-lg text-bone uppercase mt-0.5">CERTIFIED COACHING & FORM</h3>
+            <p class="font-sans text-xs text-bone-gray mt-1">Hands-on movement biomechanics and progressive overload supervision.</p>
+          </div>
+        </div>
+
+        <!-- Card 4: Modern Biomechanical Machines -->
+        <div class="md:col-span-8 editorial-card group relative rounded-lg overflow-hidden hairline-all bg-surface flex flex-col justify-between">
+          <div class="p-8 sm:p-12 flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center space-x-2 text-[10px] font-grotesk tracking-widest text-bone-dim uppercase mb-2">
+                <span>QUADRANT 04 // BIOMECHANICAL SUITE</span>
+              </div>
+              <h3 class="font-syne font-black text-2xl sm:text-4xl text-bone uppercase">
+                ZERO JOINT IMPINGEMENT. PERFECT FORCE CURVES.
+              </h3>
+              <p class="font-sans text-sm sm:text-base text-bone-gray mt-4 max-w-2xl leading-relaxed">
+                Featuring pin-selected convergent presses, iso-lateral leg drives, and multi-angle cable stations designed to match true muscular hypertrophy vectors without unnecessary spine compression.
+              </p>
+            </div>
+            <div class="mt-8 pt-6 hairline-t flex flex-wrap items-center justify-between gap-4">
+              <div class="flex items-center space-x-4 text-xs font-grotesk text-bone-muted uppercase">
+                <span>• ISO-LATERAL CHEST</span>
+                <span>• PENDULUM SQUAT</span>
+                <span>• DUAL CABLE FLEET</span>
+              </div>
+              <button onclick="openVipModal()" class="text-xs font-grotesk font-semibold text-bone hover:text-accent-chalk uppercase underline">
+                EXPERIENCE THE FLOOR ↗
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 4. LOCATION & DIRECT NAVIGATION (Omega City Showcase)   -->
+    <!-- ======================================================== -->
+    <section id="location" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hairline-b">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Address & Direct Actions -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center space-x-2 text-[10px] font-grotesk tracking-widest text-bone-dim uppercase mb-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent-emerald"></span>
+              <span>DESTINATION & LOGISTICS</span>
+            </div>
+            
+            <h2 class="font-syne font-black text-3xl sm:text-5xl text-bone tracking-tight uppercase">
+              LOCATE PRIME FITHIT.
+            </h2>
+            
+            <!-- Address Showcase -->
+            <div class="mt-6 p-6 rounded-lg hairline-all bg-surface-card">
+              <span class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase block">OFFICIAL ADDRESS</span>
+              <p class="font-sans text-base sm:text-lg font-medium text-bone mt-2 leading-snug">
+                Omega City, Plot No. B-01100077, near Chandigarh University, Kharar, Punjab 140301
+              </p>
+              
+              <!-- Quick Proximity Pills -->
+              <div class="mt-4 pt-4 hairline-t flex flex-wrap gap-2 text-[10px] font-grotesk tracking-wider uppercase text-bone-gray">
+                <span class="px-2.5 py-1 rounded hairline-all bg-surface">3 MIN FROM CU HIGHWAY</span>
+                <span class="px-2.5 py-1 rounded hairline-all bg-surface">DEDICATED PARKING</span>
+                <span class="px-2.5 py-1 rounded hairline-all bg-surface">EASY ACCESSIBILITY</span>
+              </div>
+            </div>
+
+            <!-- Hours of Operation Schedule Card -->
+            <div class="mt-6 p-6 rounded-lg hairline-all bg-surface-card">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase">OPERATIONAL TIMINGS</span>
+                <span id="location-status-badge" class="px-2 py-0.5 rounded text-[10px] font-grotesk tracking-wider bg-accent-emerald/10 text-accent-emerald uppercase font-semibold">
+                  OPEN NOW
+                </span>
+              </div>
+
+              <div class="space-y-3 text-xs font-grotesk">
+                <div class="flex justify-between items-center py-1.5 hairline-b text-bone-muted">
+                  <span>MONDAY – SATURDAY</span>
+                  <span class="font-semibold text-bone">05:30 AM – 10:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center py-1.5 text-bone-gray">
+                  <span>SUNDAY (RECOVERY & OPEN FLOOR)</span>
+                  <span class="font-semibold text-bone">07:00 AM – 01:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1-Click Action Buttons -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <!-- Get Directions Button -->
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Prime+FitHit+Gym+Omega+City+Plot+B-01100077+Kharar+Punjab+140301" target="_blank" rel="noopener noreferrer" class="btn-bone px-6 py-4 rounded font-grotesk font-bold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 text-center">
+                <i data-lucide="navigation" class="w-4 h-4"></i>
+                <span>GET DIRECTIONS (1-CLICK)</span>
+              </a>
+
+              <!-- Call Direct Action -->
+              <a href="tel:+918378000084" class="btn-outline px-6 py-4 rounded font-grotesk font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 text-center">
+                <i data-lucide="phone-call" class="w-4 h-4 text-bone"></i>
+                <span>CALL: 083780 00084</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Embedded Dark Mode Google Map Card -->
+        <div class="lg:col-span-7 w-full">
+          <div class="relative rounded-lg overflow-hidden hairline-all bg-surface-card p-3 shadow-2xl">
+            
+            <!-- Map Top Technical Header -->
+            <div class="flex items-center justify-between px-3 py-2 text-[10px] font-grotesk tracking-widest text-bone-dim uppercase hairline-b mb-3">
+              <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-accent-emerald live-pulse"></span>
+                <span>GOOGLE MAPS ENGINE // KHARAR GRID</span>
+              </span>
+              <span>LAT: 30.7415 • LNG: 76.6384</span>
+            </div>
+
+            <!-- Embedded Google Map -->
+            <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded overflow-hidden bg-surface">
+              <iframe 
+                title="Prime FitHit Gym Omega City Location"
+                src="https://maps.google.com/maps?q=Omega+City+Plot+B-01100077+Kharar+Punjab+140301&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                class="w-full h-full border-0 filter grayscale invert contrast-125 opacity-85 hover:opacity-100 transition-opacity" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+
+              <!-- Map Overlay Target Badge -->
+              <div class="absolute bottom-4 left-4 p-3 rounded hairline-all bg-obsidian/90 backdrop-blur-md max-w-xs pointer-events-none">
+                <span class="font-syne font-bold text-xs text-bone block">PRIME FITHIT GYM</span>
+                <span class="font-sans text-[10px] text-bone-gray block mt-0.5">Omega City, near Chandigarh University Highway</span>
+              </div>
+            </div>
+
+            <!-- Map Bottom Quick Bar -->
+            <div class="mt-3 px-3 py-2 flex flex-wrap items-center justify-between gap-2 text-[11px] font-grotesk text-bone-muted">
+              <span>Direct destination set to Omega City Gate</span>
+              <a href="https://maps.google.com/?q=Prime+FitHit+Gym+Omega+City+Kharar" target="_blank" rel="noopener noreferrer" class="text-bone hover:text-accent-chalk underline uppercase">
+                OPEN FULL MAP APP ↗
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- PRE-PITCH CONCIERGE BANNER                               -->
+    <!-- ======================================================== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+      <div class="p-8 sm:p-16 rounded-2xl hairline-all bg-surface-card relative overflow-hidden">
+        
+        <!-- Background watermark -->
+        <div class="absolute -right-10 -bottom-10 font-syne font-black text-8xl sm:text-9xl text-surface-elevated/40 select-none pointer-events-none">
+          FITHIT
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto">
+          <span class="text-[10px] font-grotesk tracking-widest text-bone-dim uppercase block mb-3">
+            [ ELEVATE YOUR STANDARD ]
+          </span>
+          <h2 class="font-syne font-black text-3xl sm:text-5xl text-bone uppercase tracking-tight">
+            CLAIM YOUR 1-DAY VIP ACCESS.
+          </h2>
+          <p class="font-sans text-sm sm:text-base text-bone-gray mt-4 max-w-xl mx-auto leading-relaxed">
+            Test the biomechanical equipment, run the CrossFit turf, and experience the standard in Kharar. Instant reservation via WhatsApp concierge.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <button onclick="openVipModal()" class="btn-bone px-8 py-4 rounded font-grotesk font-bold text-sm tracking-wider uppercase">
+              BOOK VIP PASS NOW
+            </button>
+            <a href="https://wa.me/918378000084?text=Hey%20Prime%20FitHit%2C%20I%20want%20to%20book%20a%20VIP%20floor%20pass%20at%20your%20Omega%20City%20branch." target="_blank" rel="noopener noreferrer" class="btn-outline px-7 py-4 rounded font-grotesk font-medium text-sm tracking-wider uppercase flex items-center space-x-2 text-bone">
+              <i data-lucide="message-circle" class="w-4 h-4 text-accent-emerald"></i>
+              <span>CHAT WITH CONCIERGE</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- FOOTER (High-Fashion Monochromatic Archive)              -->
+  <!-- ======================================================== -->
+  <footer class="hairline-t bg-surface py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-xs font-grotesk text-bone-dim">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <div>
+        <div class="font-syne font-black text-base text-bone tracking-tight">PRIME FITHIT GYM</div>
+        <p class="text-[11px] text-bone-dim mt-1">Omega City, Plot No. B-01100077, Kharar, Punjab 140301</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6 tracking-widest uppercase">
+        <button onclick="replayIntro()" class="hover:text-bone transition-colors flex items-center space-x-1">
+          <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+          <span>REPLAY CINEMATIC INTRO</span>
+        </button>
+        <a href="tel:+918378000084" class="hover:text-bone transition-colors">083780 00084</a>
+        <a href="https://wa.me/918378000084" target="_blank" class="hover:text-bone transition-colors">WHATSAPP</a>
+        <a href="#hero" class="hover:text-bone transition-colors">BACK TO TOP ↑</a>
+      </div>
+    </div>
+    
+    <div class="mt-8 pt-6 hairline-t flex flex-col sm:flex-row justify-between items-center text-[10px] text-bone-dim gap-2">
+      <span>© 2026 PRIME FITHIT GYM (OMEGA CITY). ALL RIGHTS RESERVED.</span>
+      <span class="tracking-widest uppercase">RATED 5.0 ★ ACROSS 553+ VERIFIED REVIEWS</span>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- VIP PASS MODAL (Interactive Boarding Pass Generator)     -->
+  <!-- ======================================================== -->
+  <div id="vip-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop opacity-0 pointer-events-none transition-all duration-300">
+    <div class="relative w-full max-w-lg rounded-xl hairline-all bg-surface-card p-6 sm:p-8 shadow-2xl transform scale-95 transition-all duration-300" id="vip-modal-box">
+      
+      <!-- Close Button -->
+      <button onclick="closeVipModal()" class="absolute top-5 right-5 text-bone-dim hover:text-bone p-1 rounded hairline-all bg-surface">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 text-[10px] font-grotesk tracking-widest text-accent-emerald uppercase mb-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-emerald"></span>
+          <span>COMPLIMENTARY ACCESS</span>
+        </div>
+        <h3 class="font-syne font-black text-2xl text-bone uppercase">
+          1-DAY VIP PASS RESERVATION
+        </h3>
+        <p class="font-sans text-xs text-bone-gray mt-1">
+          Reserve your full-access floor pass for Prime FitHit (Omega City). Confirmed directly with gym concierge.
+        </p>
+      </div>
+
+      <!-- Interactive Pass Form -->
+      <form id="vip-pass-form" onsubmit="generateAndSendPass(event)" class="space-y-4">
+        <div>
+          <label class="block text-[10px] font-grotesk tracking-widest text-bone-muted uppercase mb-1.5">FULL NAME</label>
+          <input type="text" id="pass-name" required placeholder="e.g. Sahil Sharma" class="w-full px-3.5 py-2.5 rounded hairline-all bg-surface text-bone text-sm font-sans focus:outline-none focus:border-bone transition-colors">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-grotesk tracking-widest text-bone-muted uppercase mb-1.5">WHATSAPP / PHONE</label>
+            <input type="tel" id="pass-phone" required placeholder="e.g. 98765 43210" class="w-full px-3.5 py-2.5 rounded hairline-all bg-surface text-bone text-sm font-sans focus:outline-none focus:border-bone transition-colors">
+          </div>
+          <div>
+            <label class="block text-[10px] font-grotesk tracking-widest text-bone-muted uppercase mb-1.5">TARGET WORKOUT DATE</label>
+            <input type="date" id="pass-date" required class="w-full px-3.5 py-2.5 rounded hairline-all bg-surface text-bone text-sm font-sans focus:outline-none focus:border-bone transition-colors">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-grotesk tracking-widest text-bone-muted uppercase mb-1.5">PRIMARY TRAINING INTEREST</label>
+          <select id="pass-goal" class="w-full px-3.5 py-2.5 rounded hairline-all bg-surface text-bone text-sm font-sans focus:outline-none focus:border-bone transition-colors">
+            <option value="CrossFit & Functional Arena">CrossFit & Functional Arena</option>
+            <option value="Olympic Barbell & Free Weights">Olympic Barbell & Free Weights</option>
+            <option value="Biomechanical Machines & Hypertrophy">Biomechanical Machines & Hypertrophy</option>
+            <option value="General Strength & Cardio Fleet">General Strength & Cardio Fleet</option>
+          </select>
+        </div>
+
+        <!-- Generated Digital Boarding Pass Preview -->
+        <div class="p-3.5 rounded hairline-all bg-obsidian border-dashed border-bone-border text-xs font-grotesk">
+          <div class="flex justify-between items-center text-[10px] text-bone-dim uppercase">
+            <span>BRANCH: OMEGA CITY</span>
+            <span id="pass-code-display" class="font-mono text-accent-chalk font-semibold">PFH-OMEGA-8821</span>
+          </div>
+          <div class="mt-2 text-bone font-medium">
+            PASS TYPE: 1-DAY ALL ACCESS VIP FLOOR PASS
+          </div>
+          <div class="mt-1 text-[10px] text-bone-gray">
+            Includes lockers, shower suite, magnesium chalk bays & trainer consultation.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full btn-bone py-3.5 rounded font-grotesk font-bold text-xs tracking-wider uppercase flex items-center justify-center space-x-2">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>CONFIRM VIP PASS VIA WHATSAPP</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Floating Pitch Toolbar (Bottom Left) -->
+  <div class="fixed bottom-5 right-5 z-40 flex items-center space-x-2 p-1.5 rounded-full hairline-all bg-surface-card/95 backdrop-blur-md shadow-2xl">
+    <button onclick="replayIntro()" class="px-3 py-1.5 rounded-full hairline-all bg-surface hover:bg-surface-elevated text-[10px] font-grotesk tracking-wider text-bone flex items-center space-x-1.5 transition-all">
+      <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+      <span>REPLAY INTRO</span>
+    </button>
+    <a href="https://wa.me/918378000084?text=Hey%20Prime%20FitHit%2C%20I%20want%20to%20book%20a%20VIP%20floor%20pass%20at%20your%20Omega%20City%20branch." target="_blank" class="px-3 py-1.5 rounded-full bg-accent-emerald/20 text-accent-emerald text-[10px] font-grotesk tracking-wider flex items-center space-x-1 hover:bg-accent-emerald/30 transition-colors">
+      <i data-lucide="message-circle" class="w-3 h-3"></i>
+      <span>08378000084</span>
+    </a>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SCRIPT: PHYSICS LETTER FALL, CHALK BURST & LOGIC        -->
+  <!-- ======================================================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Set today's date for modal default
+    const today = new Date().toISOString().split('T')[0];
+    const dateInput = document.getElementById('pass-date');
+    if (dateInput) {
+      dateInput.value = today;
+      dateInput.min = today;
+    }
+
+    // -------------------------------------------------------------
+    // AUDIO SYNTHESIZER (Cinematic Low Bass Thud & Chalk Whoosh)
+    // Completely synthesized via Web Audio API - Zero dependencies!
+    // -------------------------------------------------------------
+    let audioContext = null;
+    let isAudioEnabled = true;
+
+    function initAudio() {
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          audioContext = new AudioCtx();
+        }
+      }
+      if (audioContext && audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+    }
+
+    // Play physical heavy floor impact sound
+    function playImpactSound(pitchFactor = 1.0) {
+      if (!isAudioEnabled || !audioContext) return;
+      try {
+        const now = audioContext.currentTime;
+        
+        // Low sub-bass thump
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(80 * pitchFactor, now);
+        osc.frequency.exponentialRampToValueAtTime(25, now + 0.18);
+        
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+        
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        
+        osc.start(now);
+        osc.stop(now + 0.25);
+
+        // White noise chalk friction whoosh
+        const bufferSize = audioContext.sampleRate * 0.15;
+        const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = (Math.random() * 2 - 1) * 0.2;
+        }
+
+        const whiteNoise = audioContext.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+
+        const filter = audioContext.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(900, now);
+        filter.Q.setValueAtTime(2.5, now);
+
+        const noiseGain = audioContext.createGain();
+        noiseGain.gain.setValueAtTime(0.18, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+        whiteNoise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(audioContext.destination);
+
+        whiteNoise.start(now);
+        whiteNoise.stop(now + 0.16);
+      } catch (err) {
+        // Audio policy or silent fail
+      }
+    }
+
+    // Toggle sound button
+    const soundToggleBtn = document.getElementById('btn-sound-toggle');
+    const soundLabel = document.getElementById('sound-label');
+    const soundIcon = document.getElementById('sound-icon');
+    if (soundToggleBtn) {
+      soundToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isAudioEnabled = !isAudioEnabled;
+        if (isAudioEnabled) {
+          initAudio();
+          soundLabel.textContent = 'AUDIO: ON';
+          soundToggleBtn.classList.remove('text-bone-dim');
+          soundToggleBtn.classList.add('text-bone');
+        } else {
+          soundLabel.textContent = 'AUDIO: OFF';
+          soundToggleBtn.classList.add('text-bone-dim');
+          soundToggleBtn.classList.remove('text-bone');
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // ORGANIC CANVAS 2D CHALK DUST & SMOKE PARTICLE SYSTEM
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('chalk-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationFrameId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class ChalkParticle {
+      constructor(x, y, isBigSmoke = false) {
+        this.x = x + (Math.random() - 0.5) * 40;
+        this.y = y + (Math.random() - 0.5) * 10;
+        
+        // Velocity: explosive outward & upward
+        const angle = (Math.PI * 1.05) + Math.random() * (Math.PI * 0.9); // Mostly upward & lateral
+        const speed = isBigSmoke ? (Math.random() * 3.5 + 1.2) : (Math.random() * 7.5 + 2.5);
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+
+        this.drag = isBigSmoke ? 0.96 : 0.94;
+        this.buoyancy = isBigSmoke ? -0.04 : -0.02; // slow drift upward
+
+        this.size = isBigSmoke ? (Math.random() * 25 + 16) : (Math.random() * 5 + 1.5);
+        this.growth = isBigSmoke ? 0.45 : 0.08;
+        
+        this.alpha = isBigSmoke ? (Math.random() * 0.45 + 0.3) : (Math.random() * 0.8 + 0.2);
+        this.decay = isBigSmoke ? (Math.random() * 0.005 + 0.003) : (Math.random() * 0.014 + 0.008);
+
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.03;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        this.vx *= this.drag;
+        this.vy *= this.drag;
+        this.vy += this.buoyancy; // gentle atmospheric upward drift
+
+        this.size += this.growth;
+        this.alpha -= this.decay;
+        this.rotation += this.rotationSpeed;
+      }
+
+      draw(c) {
+        if (this.alpha <= 0) return;
+        c.save();
+        c.translate(this.x, this.y);
+        c.rotate(this.rotation);
+
+        // Soft radial gradient for chalk powder texture
+        const grad = c.createRadialGradient(0, 0, 0, 0, 0, Math.max(1, this.size));
+        grad.addColorStop(0, `rgba(255, 255, 255, ${this.alpha * 0.95})`);
+        grad.addColorStop(0.35, `rgba(245, 245, 242, ${this.alpha * 0.5})`);
+        grad.addColorStop(0.7, `rgba(235, 235, 230, ${this.alpha * 0.18})`);
+        grad.addColorStop(1, 'rgba(230, 230, 225, 0)');
+
+        c.fillStyle = grad;
+        c.beginPath();
+        c.arc(0, 0, Math.max(1, this.size), 0, Math.PI * 2);
+        c.fill();
+        c.restore();
+      }
+    }
+
+    function spawnChalkBurst(x, y, count = 180) {
+      for (let i = 0; i < count; i++) {
+        const isBigSmoke = Math.random() < 0.25;
+        particles.push(new ChalkParticle(x, y, isBigSmoke));
+      }
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw(ctx);
+        if (p.alpha <= 0.005) {
+          particles.splice(i, 1);
+        }
+      }
+
+      if (particles.length > 0 || isIntroRunning) {
+        animationFrameId = requestAnimationFrame(renderParticles);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // CINEMATIC LETTER FALL TIMELINE & ORCHESTRATION
+    // -------------------------------------------------------------
+    let introTimeline = null;
+    let isIntroRunning = false;
+    let autoTransitionTimer = null;
+
+    const letters = document.querySelectorAll('.letter-span');
+    const introScreen = document.getElementById('intro-screen');
+    const introIndicator = document.getElementById('intro-indicator');
+    const introTagline = document.getElementById('intro-tagline');
+    const introFloorLine = document.getElementById('intro-floor-line');
+    const introHint = document.getElementById('intro-hint');
+    const stageContainer = document.getElementById('intro-stage');
+
+    function runCinematicEntrance() {
+      isIntroRunning = true;
+      initAudio();
+      
+      // Reset elements
+      if (introTimeline) introTimeline.kill();
+      clearTimeout(autoTransitionTimer);
+      particles = [];
+      cancelAnimationFrame(animationFrameId);
+      renderParticles();
+
+      introScreen.style.display = 'flex';
+      introScreen.style.opacity = '1';
+      introScreen.style.pointerEvents = 'auto';
+
+      gsap.set(introIndicator, { opacity: 0, y: -10 });
+      gsap.set(introTagline, { opacity: 0, y: 15 });
+      gsap.set(introFloorLine, { opacity: 0, scaleX: 0 });
+      gsap.set(introHint, { opacity: 0 });
+
+      // Calculate initial drop heights above viewport
+      const dropDistance = window.innerHeight * 0.95;
+
+      letters.forEach((letter) => {
+        const randomTilt = (Math.random() - 0.5) * 8; // subtle realistic tumble
+        gsap.set(letter, {
+          y: -dropDistance,
+          rotation: randomTilt,
+          opacity: 0.95,
+          scale: 1.05
+        });
+      });
+
+      introTimeline = gsap.timeline({
+        onComplete: () => {
+          // Keep displaying the cinematic lockup for 2.5 seconds, then transition seamlessly
+          autoTransitionTimer = setTimeout(() => {
+            transitionToHomepage();
+          }, 2400);
+        }
+      });
+
+      // Show top indicator slightly before or as impact begins
+      introTimeline.to(introIndicator, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, 0.1);
+
+      introTimeline.to(introHint, {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      }, 0.8);
+
+      // Letter fall with true physical gravity acceleration
+      letters.forEach((letter, index) => {
+        const staggerTime = 0.18 + index * 0.065; // Staggered drop sequence
+        
+        // Fall with physical gravity acceleration (power4.in)
+        introTimeline.to(letter, {
+          y: 0,
+          rotation: 0,
+          scale: 1,
+          duration: 0.65,
+          ease: 'power2.in',
+          onComplete: () => {
+            // Trigger physical bounce / overshoot
+            gsap.fromTo(letter, 
+              { y: -12 }, 
+              { y: 0, duration: 0.3, ease: 'bounce.out' }
+            );
+
+            // Audio thump
+            playImpactSound(1.0 + (index % 3) * 0.12);
+
+            // Organic chalk burst at the baseline coordinates of the letter
+            const rect = letter.getBoundingClientRect();
+            const burstX = rect.left + rect.width / 2;
+            const burstY = rect.bottom;
+            spawnChalkBurst(burstX, burstY, 28);
+          }
+        }, staggerTime);
+      });
+
+      // Floor impact micro-shake on the whole stage
+      const finalLetterTime = 0.18 + letters.length * 0.065 + 0.65;
+
+      introTimeline.call(() => {
+        // Massive grand billow as the full title impacts
+        const stageRect = stageContainer.getBoundingClientRect();
+        spawnChalkBurst(stageRect.left + stageRect.width * 0.3, stageRect.bottom - 10, 80);
+        spawnChalkBurst(stageRect.left + stageRect.width * 0.7, stageRect.bottom - 10, 80);
+
+        // Subtle 2px screen-shake micro-rebound
+        gsap.to(stageContainer, {
+          y: 2,
+          duration: 0.04,
+          yoyo: true,
+          repeat: 3,
+          ease: 'none'
+        });
+      }, null, finalLetterTime);
+
+      // Floor hairline reveal
+      introTimeline.to(introFloorLine, {
+        opacity: 0.4,
+        scaleX: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, finalLetterTime);
+
+      // Tagline "GET IN. GET FIT." crisp wipe/fade in directly beneath
+      introTimeline.to(introTagline, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+      }, finalLetterTime + 0.15);
+    }
+
+    function transitionToHomepage() {
+      if (!isIntroRunning) return;
+      isIntroRunning = false;
+      clearTimeout(autoTransitionTimer);
+
+      gsap.to(introScreen, {
+        opacity: 0,
+        scale: 1.02,
+        duration: 0.75,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          introScreen.style.display = 'none';
+          introScreen.style.pointerEvents = 'none';
+          cancelAnimationFrame(animationFrameId);
+        }
+      });
+    }
+
+    // Skip intro when clicking anywhere on the screen or pressing ESC
+    introScreen.addEventListener('click', () => {
+      transitionToHomepage();
+    });
+
+    const skipBtn = document.getElementById('btn-skip-intro');
+    if (skipBtn) {
+      skipBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        transitionToHomepage();
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isIntroRunning) {
+        transitionToHomepage();
+      }
+    });
+
+    // Replay function for live pitch demo
+    function replayIntro() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      runCinematicEntrance();
+    }
+    window.replayIntro = replayIntro;
+
+    const replayBtn = document.getElementById('btn-replay-intro');
+    if (replayBtn) {
+      replayBtn.addEventListener('click', replayIntro);
+    }
+
+    // Start intro immediately on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      runCinematicEntrance();
+      updateDynamicHours();
+    });
+
+    // -------------------------------------------------------------
+    // DYNAMIC HOURS CALCULATION (Open Now / Closes 10:00 PM)
+    // -------------------------------------------------------------
+    function updateDynamicHours() {
+      const now = new Date();
+      const day = now.getDay(); // 0 is Sunday, 1 is Monday ...
+      const hour = now.getHours();
+      const minute = now.getMinutes();
+      const currentTimeVal = hour + minute / 60;
+
+      let isOpen = false;
+      let statusText = 'CLOSED NOW • OPENS 5:30 AM';
+
+      if (day === 0) {
+        // Sunday: 7:00 AM – 1:00 PM
+        if (currentTimeVal >= 7.0 && currentTimeVal < 13.0) {
+          isOpen = true;
+          statusText = 'OPEN NOW • CLOSES 1:00 PM (SUNDAY)';
+        } else {
+          statusText = 'CLOSED NOW • OPENS MON 5:30 AM';
+        }
+      } else {
+        // Mon-Sat: 5:30 AM – 10:00 PM
+        if (currentTimeVal >= 5.5 && currentTimeVal < 22.0) {
+          isOpen = true;
+          statusText = 'OPEN NOW • CLOSES 10:00 PM';
+        } else {
+          statusText = 'CLOSED NOW • OPENS 5:30 AM';
+        }
+      }
+
+      const navPillText = document.getElementById('nav-status-text');
+      const heroBadge = document.getElementById('hero-status-badge');
+      const locBadge = document.getElementById('location-status-badge');
+
+      if (navPillText) navPillText.textContent = statusText;
+      if (heroBadge) heroBadge.textContent = statusText;
+      if (locBadge) {
+        locBadge.textContent = isOpen ? 'OPEN NOW' : 'CLOSED';
+        if (!isOpen) {
+          locBadge.className = 'px-2 py-0.5 rounded text-[10px] font-grotesk tracking-wider bg-surface-border text-bone-dim uppercase font-semibold';
+        }
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 5.0 SOCIAL PROOF ARCHIVE: CATEGORY FILTERING
+    // -------------------------------------------------------------
+    function filterReviews(category, btnElement) {
+      const filterBtns = document.querySelectorAll('.review-filter-btn');
+      filterBtns.forEach(btn => {
+        btn.classList.remove('bg-bone', 'text-obsidian', 'font-semibold');
+        btn.classList.add('bg-surface-elevated', 'text-bone-gray');
+      });
+
+      if (btnElement) {
+        btnElement.classList.add('bg-bone', 'text-obsidian', 'font-semibold');
+        btnElement.classList.remove('bg-surface-elevated', 'text-bone-gray');
+      }
+
+      const cards = document.querySelectorAll('.review-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          gsap.to(card, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3,
+            display: 'flex'
+          });
+        } else {
+          gsap.to(card, {
+            opacity: 0,
+            scale: 0.96,
+            duration: 0.2,
+            display: 'none'
+          });
+        }
+      });
+    }
+    window.filterReviews = filterReviews;
+
+    // -------------------------------------------------------------
+    // VIP PASS MODAL & WHATSAPP TICKET GENERATOR
+    // -------------------------------------------------------------
+    const vipModal = document.getElementById('vip-modal');
+    const vipModalBox = document.getElementById('vip-modal-box');
+
+    function openVipModal() {
+      initAudio();
+      // Generate randomized VIP Pass Serial Number
+      const randomId = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('pass-code-display').textContent = `PFH-OMEGA-${randomId}`;
+
+      vipModal.style.pointerEvents = 'auto';
+      gsap.to(vipModal, { opacity: 1, duration: 0.25 });
+      gsap.to(vipModalBox, { scale: 1, duration: 0.3, ease: 'power2.out' });
+    }
+    window.openVipModal = openVipModal;
+
+    function closeVipModal() {
+      gsap.to(vipModal, {
+        opacity: 0,
+        duration: 0.2,
+        onComplete: () => {
+          vipModal.style.pointerEvents = 'none';
+        }
+      });
+      gsap.to(vipModalBox, { scale: 0.95, duration: 0.2 });
+    }
+    window.closeVipModal = closeVipModal;
+
+    vipModal.addEventListener('click', (e) => {
+      if (e.target === vipModal) closeVipModal();
+    });
+
+    function generateAndSendPass(e) {
+      e.preventDefault();
+      const name = document.getElementById('pass-name').value.trim();
+      const phone = document.getElementById('pass-phone').value.trim();
+      const date = document.getElementById('pass-date').value;
+      const goal = document.getElementById('pass-goal').value;
+      const passCode = document.getElementById('pass-code-display').textContent;
+
+      const message = `Hey Prime FitHit, I want to book a VIP floor pass at your Omega City branch.%0A%0A*VIP Pass ID:* ${passCode}%0A*Athlete Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Visit Date:* ${date}%0A*Focus:* ${encodeURIComponent(goal)}`;
+      
+      const whatsappUrl = `https://wa.me/918378000084?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+      closeVipModal();
+    }
+    window.generateAndSendPass = generateAndSendPass;
+  </script>
+</body>
+</html>
